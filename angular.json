@@ -20,14 +20,14 @@
             "outputPath": "dist/SecureSignin",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": "src/common/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              { "glob": "**/*", "input": "src/common/assets/", "output": "/assets/" }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/common/styles.scss"
             ],
             "scripts": [],
             "es5BrowserSupport": true
@@ -62,7 +62,9 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "SecureSignin:build"
+            "browserTarget": "SecureSignin:build",
+            "host": "0.0.0.0",
+            "port": 7040
           },
           "configurations": {
             "production": {
@@ -80,16 +82,16 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": "src/common/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.scss"
+              "src/common/styles.scss"
             ],
             "scripts": [],
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              { "glob": "**/*", "input": "src/common/assets/", "output": "/assets/" }
             ]
           }
         },
